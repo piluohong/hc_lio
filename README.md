@@ -12,7 +12,7 @@ Repository for 3D localization and mapping of multi-agricultural scenes via a hi
 
 Datasets： hku_main_building_GICP
 
-![alt text](figtures/gliom_hku_main_building.png)
+![alt text](figures/gliom_hku_main_building.png)
 
 Datasets: hku_main_building_VGICP
 

@@ -2,7 +2,7 @@
  * @Author: piluohong 1912694135@qq.com
  * @Date: 2024-03-04 16:27:35
  * @LastEditors: piluohong 1912694135@qq.com
- * @LastEditTime: 2024-03-28 16:00:11
+ * @LastEditTime: 2024-04-06 12:34:10
  * @FilePath: /slam/hhh_ws/src/hc-lio/README.md
  * @Description: 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 -->
@@ -10,9 +10,8 @@
 Repository for 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 
 
-
-Experiment
-![alt text](figures/figure8.tif)
+Experiment in farming field:
+![Alt text](figures/result.png)
 
 Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5?usp=drive_link
 
@@ -24,7 +23,13 @@ Additinal test： hku_main_building
 ![alt text](figures/hku_main_building_VGICP.png)
 ![alt text](figures/hku_main_building_traj_VGICP.png)
 
-Acknowledgement:
+
+TODO:
+add gravity factor;
+add submap management;
+...
+
+Acknowledgment:
 ```
 @article{chen2022dlio,
   title={Direct LiDAR-Inertial Odometry: Lightweight LIO with Continuous-Time Motion Correction},

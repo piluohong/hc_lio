@@ -17,7 +17,7 @@ Experiment in farming field:
 Dataset Table
 ![alt text](figures/dataset_table.png)
 
-Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5
+Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5 (now closed this link for some reseaons)
 
 Additinal test： hku_main_building
 ![alt text](figures/hku_main_building.png)
@@ -30,7 +30,7 @@ add gravity factor;
 add submap management based point-based or voxel-based;
 ...
 
-Acknowledgment:
+Acknowledgements:
 ```
 @article{chen2022dlio,
   title={Direct LiDAR-Inertial Odometry: Lightweight LIO with Continuous-Time Motion Correction},

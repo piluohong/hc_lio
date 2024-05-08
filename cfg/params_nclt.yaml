@@ -1,0 +1,109 @@
+###########################################################
+#                                                         #
+# Copyright (c)                                           #
+#                                                         #
+# The Verifiable & Control-Theoretic Robotics (VECTR) Lab #
+# University of California, Los Angeles                   #
+#                                                         #
+# Authors: Kenny J. Chen, Ryan Nemiroff, Brett T. Lopez   #
+# Contact: {kennyjchen, ryguyn, btlopez}@ucla.edu         #
+#                                                         #
+###########################################################
+
+dlio:
+  version: piluohong
+  loopflag: true
+  saveFile: false
+  
+  adaptive: true
+
+  pointcloud:
+    deskew: true
+    voxelize: true
+
+  imu:
+    calibration: true
+    intrinsics:
+      accel:
+        bias: [ 6.4356659353532566e-05, 6.4356659353532566e-05, 6.4356659353532566e-05]
+        sm:   [ 1.,  0.,  0.,
+                0.,  1.,  0.,
+                0.,  0.,  1. ]
+      gyro:
+        bias: [ 0.0, 0.0, 0.0 ]
+
+  extrinsics:
+    baselink2imu:
+      t: [0.11,0.18,0.71]
+      R: [ 1.,  0.,  0.,
+          0.,  1.,  0.,
+          0.,  0.,  1. ]
+    baselink2lidar:
+      t: [ -0.002,  0.004,  0.957 ]
+      R: [ 1.,  0.,  0.,
+           0.,  1.,  0.,
+           0.,  0.,  1. ]
+
+  frames:
+    odom: odom
+    baselink: base_link
+    lidar: lidar
+    imu: imu
+
+  map:
+    waitUntilMove: false
+    dense:
+      filtered: false
+    sparse:
+      frequency: 1.0
+      leafSize: 0.25
+
+  odom:
+
+    gravity: 9.80505
+
+    imu:
+      approximateGravity: true
+      calibration:
+        gyro: true
+        accel: true
+        time: 3
+      bufferSize: 5000
+
+    preprocessing:
+      cropBoxFilter:
+        size: 1.0
+      voxelFilter:
+        res: 0.3
+
+    keyframe:
+      threshD: 1.0
+      threshR: 30.0
+      envir_thresh_: 5.0
+      loop_score_: 0.2
+      loop_search_R: 15
+      loop_search_Num: 15
+
+    submap:
+      useJaccard: false
+      keyframe:
+        knn: 10
+        kcv: 0
+        kcc: 0
+    gicp:
+      minNumPoints: 64
+      kCorrespondences: 16
+      maxCorrespondenceDistance: 0.5
+      maxIterations: 32
+      transformationEpsilon: 0.01
+      rotationEpsilon: 0.01
+      initLambdaFactor: 1e-9
+
+    geo:
+      Kp: 4.5
+      Kv: 11.25
+      Kq: 4.0
+      Kab: 2.25
+      Kgb: 1.0
+      abias_max: 5.0
+      gbias_max: 0.5

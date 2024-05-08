@@ -1,0 +1,125 @@
+###########################################################
+#                                                         #
+# Copyright (c)                                           #
+#                                                         #
+# The Verifiable & Control-Theoretic Robotics (VECTR) Lab #
+# University of California, Los Angeles                   #
+#                                                         #
+# Authors: Kenny J. Chen, Ryan Nemiroff, Brett T. Lopez   #
+# Contact: {kennyjchen, ryguyn, btlopez}@ucla.edu         #
+#                                                         #
+# Modified by piluohong SCAU
+###########################################################
+
+dlio:
+  version:  piluohong 
+  loopflag: true
+  saveFile: false
+  matchMethod: VGICP
+
+  adaptive: true
+  
+  pointcloud:
+    deskew: true
+    voxelize: true  #vef_use_
+
+  imu:
+    calibration: true
+    intrinsics:
+      accel:
+        bias: [ 2.2721726694029182e-02, 3.1759023909318861e-02, 3.5575773750146200e-02 ] #结果不咋样
+        sm:   [ 1.,  0.,  0.,
+                0.,  1.,  0.,
+                0.,  0.,  1. ]
+      gyro:
+        bias: [4.8477797168896648e-03,4.8477797168896648e-03,4.8477797168896648e-03]
+
+  extrinsics:
+    baselink2imu:
+      t: [0.011, 0.02329, -0.04412]
+      R: [ 1.,  0.,  0.,
+           0.,  1.,  0.,
+           0.,  0.,  1. ] #livox_horizon:1:-1;9:-1 
+    baselink2lidar:
+      t: [ 0.,  0.,  0. ]
+      R: [ 1.,  0.,  0.,
+           0.,  1.,  0.,
+           0.,  0.,  1. ]
+
+  frames:
+    odom: map
+    baselink: base_link
+    lidar: lidar
+    imu: imu
+
+  map:
+    waitUntilMove: false
+    dense:
+      filtered: false
+    sparse:
+      frequency: 1.0
+      leafSize: 0.25
+
+  odom:
+
+    gravity: 9.80665
+    normlize: true
+
+    imu:
+      approximateGravity: true #重力对齐
+      calibration: 
+        gyro: true
+        accel: true
+        time: 3
+      bufferSize: 3000
+
+    preprocessing:
+      cropBoxFilter:
+        size: 0.5 #风场：0.25 #Min blind: 0.1
+      voxelFilter:
+        res: 0.25
+
+    keyframe:
+      threshD: 1.0
+      threshR: 30
+      # threshJaccardCorr: 2.0 
+      # threshJaccardSim: 0.1
+      envir_thresh_: 4.0  #paper max 0.5~2.0
+      loop_score_: 0.15 #退化环境降低数值
+      loop_search_R: 8
+      loop_search_Num: 10
+      loop_size: 0.25
+      loop_frequeenc: 1
+      downsamplerate: 1.0
+
+    submap:
+      useJaccard: false
+      keyframe:
+        knn: 15
+        kcv: 10
+        kcc: 5
+    gicp:
+      minNumPoints: 200
+      kCorrespondences: 16
+      maxCorrespondenceDistance: 1.0  #0.5
+      maxIterations: 100
+      transformationEpsilon: 0.01
+      rotationEpsilon: 0.01
+      initLambdaFactor: 1e-9
+      neighborSearch: 1
+      # dw_dist: 0.0
+      # dw_azimuth: 0.0
+      # dw_elevation: 0.0
+
+    geo:
+      Kp: 4.5
+      Kv: 11.25
+      Kq: 4.0 #4.0
+      Kab: 2.25
+      Kgb: 1.0
+
+      abias_max: 5.0
+      gbias_max: 0.5
+
+   
+

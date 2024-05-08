@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<package>
+  <name>hc_lio</name>
+  <version>1.1.1</version>
+  <description>Direct LiDAR-Inertial Odometry: Lightweight LIO with Continuous-Time Motion Correction</description>
+
+  <maintainer email="kennyjchen@ucla.edu">Kenny J. Chen</maintainer>
+  <maintainer email="ryguyn@ucla.edu">Ryan Nemiroff</maintainer>
+  <maintainer email="btlopez@ucla.edu">Brett T. Lopez</maintainer>
+
+  <author>Kenny J. Chen</author>
+  <author>Ryan Nemiroff</author>
+  <author>Brett T. Lopez</author>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+ <build_depend>roscpp</build_depend>
+  <run_depend>roscpp</run_depend>
+
+  <build_depend>pcl_conversions</build_depend>
+  <run_depend>pcl_conversions</run_depend>
+
+  <build_depend>pcl_ros</build_depend>
+  <run_depend>pcl_ros</run_depend>
+  <build_depend>std_msgs</build_depend>
+  <run_depend>std_msgs</run_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <build_depend>nav_msgs</build_depend>
+  <run_depend>nav_msgs</run_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <run_depend>visualization_msgs</run_depend>
+  <build_depend>tf2_ros</build_depend>
+  <run_depend>tf2_ros</run_depend>
+  <build_depend>octomap</build_depend>
+  <run_depend>octomap</run_depend>
+  <build_depend>livox_ros_driver2</build_depend>
+  <run_depend>livox_ros_driver2</run_depend>
+
+  <!-- <build_depend>message_generation</build_depend>
+  <run_depend>message_generation</run_depend>
+  <build_depend>message_runtime</build_depend>
+  <run_depend>message_runtime</run_depend> -->
+
+  <build_depend>GTSAM</build_depend>
+  <run_depend>GTSAM</run_depend>
+
+</package>

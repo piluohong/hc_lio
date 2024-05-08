@@ -1,0 +1,122 @@
+###########################################################
+#                                                         #
+# Copyright (c)                                           #
+#                                                         #
+# The Verifiable & Control-Theoretic Robotics (VECTR) Lab #
+# University of California, Los Angeles                   #
+#                                                         #
+# Authors: Kenny J. Chen, Ryan Nemiroff, Brett T. Lopez   #
+# Contact: {kennyjchen, ryguyn, btlopez}@ucla.edu         #
+#                                                         #
+###########################################################
+
+#modified by piluohong 
+dlio:
+  version: piluohong
+  loopflag: true
+  saveFile: true
+  matchMethod: VGICP
+  
+  adaptive: true
+
+  pointcloud:
+    deskew: true
+    voxelize: true
+
+  imu:
+    calibration: true
+    intrinsics:
+      accel:
+        bias: [0.,0.,0.]
+        sm:   [ 1.,  0.,  0.,
+                0.,  1.,  0., 
+                0.,  0.,  1. ]
+      gyro:
+        bias:  [ 0.001,  0.001,  0.001 ]
+
+  extrinsics:
+    baselink2imu:
+      t: [0.0,0.0,0.0]
+      R: [1, 0, 0,
+            0, 1, 0,
+            0, 0, 1]
+    baselink2lidar:
+      t: [ 0.12,  0.07,  0.04]
+      R: [ 1.,  0.,  0.,
+           0.,  1.,  0.,
+           0.,  0.,  1]
+
+  frames:
+    odom: map
+    baselink: base_link
+    lidar: lidar
+    imu: imu
+
+  map:
+    waitUntilMove: false
+    dense:
+      filtered: false
+    sparse:
+      frequency: 1.0
+      leafSize: 0.25
+
+  odom:
+
+    gravity: 9.80655
+    normalize: false
+    computeTimeOffset: true
+
+    imu:
+      approximateGravity: false
+      calibration:
+        gyro: true
+        accel: true
+        time: 3
+      bufferSize: 3000
+
+    preprocessing:
+      cropBoxFilter:
+        size: 1.0
+      voxelFilter:
+        res: 0.25
+
+    keyframe:
+      threshD: 1.0
+      threshR: 30.0
+      # threshJaccardCorr: 2.0 
+      # threshJaccardSim: 0.1
+      envir_thresh_: 2.0
+      #LOOP
+      loop_score_: 0.3
+      loop_search_R: 10 #R2 :nanoflann
+      loop_search_Num: 15
+      loop_size: 0.25
+      loop_frequeency: 1
+      downsamplerate: 1.0
+
+    submap:
+      keyframe:
+        knn: 15
+        kcv: 10
+        # kcc: 4
+    gicp:
+      minNumPoints: 100
+      kCorrespondences: 16 #20
+      maxCorrespondenceDistance: 1.0
+      maxIterations: 64
+      transformationEpsilon: 0.01
+      rotationEpsilon: 0.01
+      initLambdaFactor: 1e-9 #优化步长
+      neighborSearch: 1
+      # dw_dist: 0.00
+      # dw_azimuth: 0.00
+      # dw_elevation: 0.00
+
+    geo:
+      Kp: 4.5
+      Kv: 11.25
+      Kq: 4.0
+      Kab: 2.25
+      Kgb: 1.0
+      abias_max: 5.0
+      gbias_max: 0.5

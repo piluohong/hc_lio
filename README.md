@@ -14,10 +14,9 @@ Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoB
 Experiments in open and dense agriculture:
 ![Alt text](figures/result.png)
 
-Additinal test:
- hku_main_building
-![alt text](figures/hku_main_building_VGICP.png)
-![alt text](figures/hku_main_building_traj_VGICP.png)
+
+
+
 
 walk_dataset (lio_sam)
 dlio:
@@ -27,9 +26,18 @@ ours:
 
 cotton_1:
 fast_lio2:
-![Alt text](cotton_fast_lio2.png)
+
+![cotton_fast_lio2](figures/cotton_fast_lio2.png)
+
 ours:
 ![Alt text](figures/cotton_ours.png)
+
+
+ hku_main_building:
+
+![alt text](figures/hku_main_building_VGICP.png)
+
+![alt text](figures/hku_main_building_traj_VGICP.png)
 
 TODO: 
 add gravity factor; 

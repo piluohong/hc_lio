@@ -35,7 +35,7 @@ dlio:
 
   extrinsics:
     baselink2imu: 
-      t: [-0.04165,-0.02326, 0.0284]
+      t: [0.04165,0.02326,-0.0284]
       R: [ 1.,  0.,  0.,
            0.,  1.,  0.,
            0.,  0.,  1. ] #livox_horizon:1:-1;9:-1 
@@ -80,11 +80,11 @@ dlio:
     keyframe:
       threshD: 1.0
       threshR: 30
-      envir_thresh_: 4.0 # avaliable change
+      envir_thresh_: 3.0 # avaliable change
       downsamplerate: 1.0
 
       loop_score_: 0.3
-      loop_search_R: 8
+      loop_search_R: 15
       loop_search_Num: 10
       loop_size: 0.25
       loop_frequeency: 1
@@ -94,12 +94,12 @@ dlio:
       keyframe:
         knn: 15
         kcv: 10
-        kcc: 5
+        # kcc: 5
     gicp:
       minNumPoints: 100
       kCorrespondences: 16
       maxCorrespondenceDistance: 1.0
-      maxIterations: 100
+      maxIterations: 72
       transformationEpsilon: 0.01
       rotationEpsilon: 0.01
       initLambdaFactor: 1e-9

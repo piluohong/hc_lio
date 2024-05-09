@@ -85,10 +85,10 @@ dlio:
       threshR: 30.0
       # threshJaccardCorr: 2.0 
       # threshJaccardSim: 0.1
-      envir_thresh_: 2.0
+      envir_thresh_: 4.0 #2~5
       #LOOP
       loop_score_: 0.3
-      loop_search_R: 10 #R2 :nanoflann
+      loop_search_R: 10 #if R, then withR2 :nanoflann
       loop_search_Num: 15
       loop_size: 0.25
       loop_frequeency: 1

@@ -17,9 +17,9 @@ Experiments in open and dense agriculture:
 
 
 
-
 walk_dataset (lio_sam)
 dlio:
+
 ![Alt text](figures/DLIO.png)
 ours:
 ![Alt text](figures/hc_lio.png)
@@ -44,6 +44,7 @@ add gravity factor;
 add submap management based point-based or voxel-based; ...
 
 Acknowledgments:
+
 @article{chen2022dlio,
   title={Direct LiDAR-Inertial Odometry: Lightweight LIO with Continuous-Time Motion Correction},
   author={Chen, Kenny and Nemiroff, Ryan and Lopez, Brett T},

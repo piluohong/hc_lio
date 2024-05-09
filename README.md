@@ -3,10 +3,10 @@
  * @Date: 2024-03-04 16:27:35
  * @LastEditors: piluohong 1912694135@qq.com
  * @LastEditTime: 2024-05-08 21:11:10
- * @FilePath: /slam/hhh_ws/src/hc-lio/README.md
+ * @FilePath: /slam/hhh_ws/src/hc_lio/README.md
  * @Description: 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 -->
-# hc-lio
+# hc_lio
 Repository for 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 
 Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5

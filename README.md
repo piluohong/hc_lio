@@ -9,6 +9,14 @@
 # hc_lio
 Repository for 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 
+
+
+BUILD:
+
+`./build.sh`
+
+
+
 Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5
 
 Experiments in open and dense agriculture:
@@ -21,6 +29,7 @@ walk_dataset (lio_sam)
 dlio:
 
 ![Alt text](figures/DLIO.png)
+
 ours:
 ![Alt text](figures/hc_lio.png)
 

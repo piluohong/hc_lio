@@ -15,7 +15,7 @@ dlio:
   version:  piluohong 
   loopflag: true
   saveFile: false
-  matchMethod: VGICP
+  matchMethod: GICP
 
   adaptive: true
   
@@ -97,7 +97,7 @@ dlio:
       keyframe:
         knn: 15
         kcv: 10
-        kcc: 5
+        # kcc: 5
     gicp:
       minNumPoints: 200
       kCorrespondences: 16

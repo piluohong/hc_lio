@@ -14,7 +14,7 @@ dlio:
   version: piluohong
   loopflag: true
   saveFile: false
-  matchMethod: VGICP
+  matchMethod: GICP
 
   adaptive: true
 

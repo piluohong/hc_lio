@@ -2512,7 +2512,7 @@ void dlio::OdomNode::performLoopClosure()
   pcl::PointCloud<PointType>::Ptr prevKeyframeCloud (new pcl::PointCloud<PointType>());// = pcl::PointCloud<PointType>::Ptr (boost::make_shared<pcl::PointCloud<PointType>>());
   // ROS_WARN("DEBUG");
   // 可通过聚集相邻帧进行当前帧的稠密化
-  this->loopFindNearKeyframes(cureKeyframeCloud, loopKeyCur,1,keyfra_);
+  this->loopFindNearKeyframes(cureKeyframeCloud, loopKeyCur,0,keyfra_);
   // 提取闭环匹配关键帧前后 相邻若干帧的关键帧的点集合，并降采样
   this->loopFindNearKeyframes(prevKeyframeCloud, loopKeyPre,this->loop_search_Num,keyfra_);
   

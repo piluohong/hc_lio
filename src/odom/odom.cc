@@ -1857,14 +1857,13 @@ void dlio::OdomNode::buildSubmap(State vehicle_state)
   this->pushSubmapIndices(convex_ds, this->submap_kcv_, this->keyframe_convex);
   
   // get concave hull indices
-  this->computeConcaveHull();
-  // get distances for each keyframe on concave hull
-  std::vector<float> concave_ds;
-  for (const auto& c : this->keyframe_concave) {
-    concave_ds.push_back(this->ds[c]);
-  }
-  // get indices for top kNN for concave hull
-  this->pushSubmapIndices(concave_ds, this->submap_kcc_, this->keyframe_concave);
+  // this->computeConcaveHull();
+  // // get distances for each keyframe on concave hull
+  // std::vector<float> concave_ds;
+  // for (const auto& c : this->keyframe_concave) {
+  //   concave_ds.push_back(this->ds[c]);}
+  // // get indices for top kNN for concave hull
+  // this->pushSubmapIndices(concave_ds, this->submap_kcc_, this->keyframe_concave);
 
   //sort current and previous submap kf list of indices
   std::sort(this->submap_kf_idx_curr.begin(), this->submap_kf_idx_curr.end(),[](const auto& a, const auto& b) { return a.index > b.index; });
@@ -2133,7 +2132,6 @@ void dlio::OdomNode::buildKeyframesAndSubmap(State vehicle_state) {
   this->cur_kf = true;
   // Pause to prevent stealing resources from the main loop if it is running.
   this->pauseSubmapBuildIfNeeded();
-  // 维护一个20个kf范围的localmap，构建submap
   this->buildSubmap(vehicle_state);
   auto t2 = std::chrono::high_resolution_clock::now();
   float built_map_time =  std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count() / 1e6; 
@@ -2504,10 +2502,8 @@ void dlio::OdomNode::performLoopClosure()
   *this->copy_cloudKeyPoses6D = *this->cloudKeyPoses6D;
   auto keyfra_ = this->keyframes;
   lock_kf.unlock();
-   // 当前关键帧索引
-  int loopKeyCur;
-  // 候选帧索引
-  int loopKeyPre;
+   // 当前关键帧索引, 候选帧索引
+  int loopKeyCur, loopKeyPre;
   
   // 在历史关键帧中查找与当前关键帧距离最近的关键帧集合，选择时间相隔较远的一帧作为候选闭环帧 (可近邻搜索也可半径搜索)
   if (this->detectLoopClosureDistance(&loopKeyCur, &loopKeyPre) == false) {return;}
@@ -2515,8 +2511,8 @@ void dlio::OdomNode::performLoopClosure()
   pcl::PointCloud<PointType>::Ptr cureKeyframeCloud (new pcl::PointCloud<PointType>());//= pcl::PointCloud<PointType>::Ptr (boost::make_shared<pcl::PointCloud<PointType>>());
   pcl::PointCloud<PointType>::Ptr prevKeyframeCloud (new pcl::PointCloud<PointType>());// = pcl::PointCloud<PointType>::Ptr (boost::make_shared<pcl::PointCloud<PointType>>());
   // ROS_WARN("DEBUG");
-  // 提取当前关键帧相邻的2帧点集合，并降采样
-  this->loopFindNearKeyframes(cureKeyframeCloud, loopKeyCur,0,keyfra_);
+  // 可通过聚集相邻帧进行当前帧的稠密化
+  this->loopFindNearKeyframes(cureKeyframeCloud, loopKeyCur,1,keyfra_);
   // 提取闭环匹配关键帧前后 相邻若干帧的关键帧的点集合，并降采样
   this->loopFindNearKeyframes(prevKeyframeCloud, loopKeyPre,this->loop_search_Num,keyfra_);
   

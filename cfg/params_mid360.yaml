@@ -86,10 +86,10 @@ dlio:
       # threshJaccardSim: 0.1
       envir_thresh_: 4.0  #paper max 0.5~2.0
       loop_score_: 0.15 #退化环境降低数值
-      loop_search_R: 8
+      loop_search_R: 8 # K search , if use radius, it is R^2.
       loop_search_Num: 10
       loop_size: 0.25
-      loop_frequeenc: 1
+      loop_frequeenc: 2
       downsamplerate: 1.0
 
     submap:

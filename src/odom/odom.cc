@@ -327,7 +327,7 @@ void dlio::OdomNode::getParams() {
 
   // Gravity
   ros::param::param<double>("~dlio/odom/gravity", this->gravity_, 1.0);
-  ros::param::param<bool>("~dlio/odom/normlize", this->gyronormlized, false);
+  ros::param::param<bool>("~dlio/odom/normalize", this->gyronormlized, false);
   // ros::param::param<double>("~dlio/odom/gravity_norm", this->gravity_delete,9.80);
 
   ros::param::param<bool>("~dlio/odom/computeTimeOffset", this->time_offset_, false);

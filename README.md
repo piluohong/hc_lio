@@ -17,7 +17,7 @@ Dependencies:
   
 Build:
 cd ~catkin_ws/ && catkin_make -j$(nproc)
-or ./build.sh`
+or ./build.sh
 
 
 

@@ -14,10 +14,10 @@ Dependencies:
   PCL == 1.10.0;
   GTSAM == 4.0.3
   Eigen == 3.3.7
+  
 Build:
-
 cd ~catkin_ws/ && catkin_make -j$(nproc)
-./build.sh`
+or ./build.sh`
 
 
 

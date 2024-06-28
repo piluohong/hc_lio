@@ -10,10 +10,14 @@
 Repository for 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 
 
+Dependencies:
+  PCL == 1.10.0;
+  GTSAM == 4.0.3
+  Eigen == 3.3.7
+Build:
 
-BUILD:
-
-`./build.sh`
+cd ~catkin_ws/ && catkin_make -j$(nproc)
+./build.sh`
 
 
 

@@ -61,7 +61,8 @@ dlio:
 
   odom:
     gravity: 9.80665
-    normlize: true
+    normalize: true
+    computeTimeOffset: true
 
     imu:
       approximateGravity: true

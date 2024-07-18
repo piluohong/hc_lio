@@ -971,7 +971,7 @@ void dlio::OdomNode::initializeDLIO() {
   }
 
   this->dlio_initialized = true;
-  std::cout << std::endl << " GLIOM initialized!" << std::endl;
+  std::cout << std::endl << " hc_lio initialized!" << std::endl;
   std::cout << std::endl << " Laser odom method(front): " << this->matchMethod << std::endl;
 }
 

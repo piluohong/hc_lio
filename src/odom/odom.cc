@@ -2901,12 +2901,13 @@ void dlio::OdomNode::meetloopAndcorrect()
               // this->cloudKeyPoses6D->points[i].pitch = this->iSAMCurrentEstimate.at<gtsam::Pose3>(i).rotation().pitch();
               // this->cloudKeyPoses6D->points[i].yaw = this->iSAMCurrentEstimate.at<gtsam::Pose3>(i).rotation().yaw();
 
+             // when excuting in small scene, ctrl + / the following code.
               Eigen::Affine3f T_g = Eigen::Affine3f::Identity();
               T_g.translate(this->keyframes[i].first.first);
               T_g.rotate(this->keyframes[i].first.second);
               auto temT = T_g.matrix() * this->keyframe_transformations_prior[i].inverse();
               this->keyframe_transformations[i] = temT.matrix();
-
+              
               pcl::PointCloud<PointType>::Ptr cloud_(boost::make_shared<pcl::PointCloud<PointType>>());
               pcl::transformPointCloud(*this->keyframesInfo[i],*cloud_,temT.matrix());
               this->keyframes[i].second = cloud_; 
@@ -2937,11 +2938,10 @@ void dlio::OdomNode::GTSAMUpdateFactor(){
             std::cout << "\033[32m===============================================================\033[0m" << std::endl;
             std::cout << "*****Before opt_pose*****:\n>>> t: [" << this->lidarPose.p(0,3) <<" "<< this->lidarPose.p(1,3)<<" "<< this->lidarPose.p(2,3) <<"]\n";
             std::cout << ">>> q: [" << this->lidarPose.q.w()<<" "<<this->lidarPose.q.x() << " "<<this->lidarPose.q.y() <<" "<<this->lidarPose.q.z()<<"]\n";
-            // 添加里程计因子
+            // 添加lidar里程计因子
             this->addOdomFactor();
-              // 添加闭环因子
+            // 添加关键帧间的IMU增量位姿约束(未实现)
             this->addLoopFactor();
-            // 重力因子
             this->addGravityFactor();
             
             // 添加GPS因子

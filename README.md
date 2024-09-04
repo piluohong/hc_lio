@@ -9,24 +9,19 @@
 # hc_lio
 Repository for 3D localization and mapping of multi-agricultural scenes via a hierarchically-coupled LiDAR-Inertial Odometry
 
-
-Dependencies:
+## Dependencies:
   PCL == 1.10.0;
   GTSAM == 4.0.3;
   Eigen == 3.3.7
   
-Build:
+## Build:
 cd ~catkin_ws/ && catkin_make -j$(nproc)
 or ./build.sh
 
-
-
 Our datasets: https://drive.google.com/drive/folders/1-SLxUejiFGY_PzGn1oLpMKWUoBMMOyx5?usp=drive_link M2DGR: https://github.com/SJTU-ViSYS/M2DGR.
 
-Experiments in open and dense agriculture:
+## Experiments in open and dense agriculture:
 ![Alt text](figures/result.png)
-
-
 
 
 walk_dataset (lio_sam)
